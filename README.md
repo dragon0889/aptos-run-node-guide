@@ -6,24 +6,35 @@ Firt, run folowing command on terminal
 **curl -s https://raw.githubusercontent.com/dragon0889/aptos-run-node-guide/main/bash > aptos-docker.sh && chmod +x aptos-docker.sh && ./aptos-docker.sh**
 
 View public identity details
+
 **cat $HOME/aptos/identity/peer-info.yaml**
 
 View private key
+
 **cat $HOME/aptos/identity/private-key.txt**
 
 View logs
-**cd $HOME/aptos
-docker compose logs -f --tail 1000**
+
+**cd $HOME/aptos****
+
+**docker compose logs -f --tail 1000**
 
 Stop node
-**cd $HOME/aptos
-docker compose stop**
+
+**cd $HOME/aptos****
+
+****docker compose stop**
 
 Start node
-**cd $HOME/aptos
-docker compose start**
+
+**cd $HOME/aptos****
+
+**docker compose start**
 
 Delete node
+
 **cd $HOME/aptos**
+
 **docker compose down -v**
+
 **rm -rf $HOME/aptos**
