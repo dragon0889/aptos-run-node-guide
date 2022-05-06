@@ -1,40 +1,42 @@
-Run fullNode + generate a unique static node identity with one-line script (docker)
-If there was a new release update you can use same one-line script to renew your node. Your private key will stay the same
+Cài đặt theo thao khảo tù guru.com.
+Thời gian cài đặt tầm 10 phút.
 
-Firt, run folowing command on terminal
+Bước 1: cài đặt screen và chạy lệnh
+>screen -S aptos
 
-**curl -s https://raw.githubusercontent.com/dragon0889/aptos-run-node-guide/main/bash > aptos-docker.sh && chmod +x aptos-docker.sh && ./aptos-docker.sh**
+Bước 2: chạy scrip dưới đây
 
-View public identity details
+>wget -q -O aptos.sh https://api.nodes.guru/aptos.sh && chmod +x aptos.sh && sudo /bin/bash aptos.sh
 
-**cat $HOME/aptos/identity/peer-info.yaml**
+Sử dụng bot telegram để tracking tại đây [telegram bot.](https://t.me/NodesGuru_bot)
 
-View private key
+Kiểm tra log
+>journalctl -u aptosd -f
 
-**cat $HOME/aptos/identity/private-key.txt**
+Khởi động lại node:
+>systemctl restart aptosd
 
-View logs
+Hiển thị khóa cá nhân:
+>cat ~/.aptos/key/private-key.txt
 
-**cd $HOME/aptos****
+Hiển thị peer-id và public key:
+>cat ~/.aptos/config/peer-info.yaml
 
-**docker compose logs -f --tail 1000**
+Cập nhập node:
+>wget -q -O aptos_update.sh https://api.nodes.guru/aptos_update.sh && chmod +x aptos_update.sh && sudo /bin/bash aptos_update.sh
 
-Stop node
+Xóa node:
 
-**cd $HOME/aptos****
+>systemctl stop aptosd
+>systemctl disable aptosd
+>rm -rf ~/aptos*
+>rm -rf ~/.aptos
+>rm -rf /opt/aptos/
 
-****docker compose stop**
+Kiểm tra trạng thái node bằng cách nhập IP tại đây:
 
-Start node
+https://node.aptos.zvalid.com/
 
-**cd $HOME/aptos****
+https://www.nodex.run/aptos_test/
 
-**docker compose start**
-
-Delete node
-
-**cd $HOME/aptos**
-
-**docker compose down -v**
-
-**rm -rf $HOME/aptos**
+https://status.devnet.aptos.dev/ 
